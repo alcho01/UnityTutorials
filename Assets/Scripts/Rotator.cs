@@ -5,12 +5,14 @@ using UnityEngine;
 public class Rotator : MonoBehaviour
 {
     public float rotationSpeed = 0.3f;
+    public PickerUpper player;
+
     private bool rotate;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,16 +22,25 @@ public class Rotator : MonoBehaviour
         {
             rotate = true;
 
-        }    else
+        }
+        else
         {
             rotate = false;
         }
     }
-    
-    void FixedUpdate() {
-        if (rotate)
+
+    void FixedUpdate()
+    {
+
+        if (player != null)
         {
-            this.GetComponent<Transform>().Rotate(0, rotationSpeed, 0);
+
+
+            if (rotate && player.count >= 3)
+            {
+
+                this.GetComponent<Transform>().Rotate(0, rotationSpeed, 0);
+            }
         }
     }
 }
